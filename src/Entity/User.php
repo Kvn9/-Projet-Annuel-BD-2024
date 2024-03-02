@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -45,6 +47,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?int $usedStorageSpace = null;
+
+    #[ORM\OneToMany(targetEntity: File::class, mappedBy: 'Id_User')]
+    private Collection $FilesId;
+
+    #[ORM\OneToMany(targetEntity: SpacePurchase::class, mappedBy: 'Id_user')]
+    private Collection $user_SpacePurchaseID;
+
+    #[ORM\OneToMany(targetEntity: Invoice::class, mappedBy: 'Id_User')]
+    private Collection $Invoice_Id;
+
+    public function __construct()
+    {
+        $this->FilesId = new ArrayCollection();
+        $this->user_SpacePurchaseID = new ArrayCollection();
+        $this->Invoice_Id = new ArrayCollection();
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -176,6 +194,96 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsedStorageSpace(int $usedStorageSpace): static
     {
         $this->usedStorageSpace = $usedStorageSpace;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, File>
+     */
+    public function getFilesId(): Collection
+    {
+        return $this->FilesId;
+    }
+
+    public function addFilesId(File $filesId): static
+    {
+        if (!$this->FilesId->contains($filesId)) {
+            $this->FilesId->add($filesId);
+            $filesId->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFilesId(File $filesId): static
+    {
+        if ($this->FilesId->removeElement($filesId)) {
+            // set the owning side to null (unless already changed)
+            if ($filesId->getIdUser() === $this) {
+                $filesId->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SpacePurchase>
+     */
+    public function getUserSpacePurchaseID(): Collection
+    {
+        return $this->user_SpacePurchaseID;
+    }
+
+    public function addUserSpacePurchaseID(SpacePurchase $userSpacePurchaseID): static
+    {
+        if (!$this->user_SpacePurchaseID->contains($userSpacePurchaseID)) {
+            $this->user_SpacePurchaseID->add($userSpacePurchaseID);
+            $userSpacePurchaseID->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserSpacePurchaseID(SpacePurchase $userSpacePurchaseID): static
+    {
+        if ($this->user_SpacePurchaseID->removeElement($userSpacePurchaseID)) {
+            // set the owning side to null (unless already changed)
+            if ($userSpacePurchaseID->getIdUser() === $this) {
+                $userSpacePurchaseID->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Invoice>
+     */
+    public function getInvoiceId(): Collection
+    {
+        return $this->Invoice_Id;
+    }
+
+    public function addInvoiceId(Invoice $invoiceId): static
+    {
+        if (!$this->Invoice_Id->contains($invoiceId)) {
+            $this->Invoice_Id->add($invoiceId);
+            $invoiceId->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoiceId(Invoice $invoiceId): static
+    {
+        if ($this->Invoice_Id->removeElement($invoiceId)) {
+            // set the owning side to null (unless already changed)
+            if ($invoiceId->getIdUser() === $this) {
+                $invoiceId->setIdUser(null);
+            }
+        }
 
         return $this;
     }
