@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}File{% endblock %}
+
+{% block body %}
+    <h1>File</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ file.id }}</td>
+            </tr>
+            <tr>
+                <th>FileID</th>
+                <td>{{ file.FileID }}</td>
+            </tr>
+            <tr>
+                <th>FileName</th>
+                <td>{{ file.FileName }}</td>
+            </tr>
+            <tr>
+                <th>FilePath</th>
+                <td>{{ file.FilePath }}</td>
+            </tr>
+            <tr>
+                <th>FileSize</th>
+                <td>{{ file.FileSize }}</td>
+            </tr>
+            <tr>
+                <th>UploadDate</th>
+                <td>{{ file.UploadDate ? file.UploadDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FileFormat</th>
+                <td>{{ file.FileFormat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_file_index') }}">back to list</a>
+
+    <a href="{{ path('app_file_edit', {'id': file.id}) }}">edit</a>
+
+    {{ include('file/_delete_form.html.twig') }}
+{% endblock %}
