@@ -3,46 +3,71 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-
-    <section class="form">
-        <div class="container">
-
-            {% if notification %}
-                <div class ="alert alert-sucess" style="background-color:black">
-                    {{ notification }}
+<section class="form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="account-page">
+                    <div class="account-box"style ="margin-top:100px">
+                        <div class="account-wrapper">
+                    <h3 class="account-title">Register</h3>
+                <p class="account-subtitle">Access to our secure client portal</p>
+                <!-- Account Logo -->
+                <div class="account-logo">
+                    <a href=""><img src="" alt=""></a>
                 </div>
-            {% endif %}
+                            {% for label, messages in app.flashes %}
+                                {% for message in messages %}
+                                    {% if label == 'success' %}
+                                        <p style="color: green;">{{ message }}</p>
+                                    {% elseif label == 'error' %}
+                                        <p style="color: red;">{{ message }}</p>
+                                    {% else %}
+                                        <p>{{ message }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                            {{ form_start(form) }}
 
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-6">
-                    {{ form_start(form) }}
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    {{ form_label(form.name, 'Name', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.name, {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_label(form.firstname, 'Firstname', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.firstname, {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
 
-                    <div class="mb-3">
-                        {{ form_label(form.name, 'Name', {'label_attr': {'class': 'form-label'}}) }}
-                        {{ form_row(form.name, {'attr' : {'class' : 'form-control'}}) }}
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.email, {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_label(form.postalAddress, 'Adresse postale', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.postalAddress, {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="row mb-6">
+                                <div class="col-md-6">
+                            
+                                </div>
+                            </div>
+
+                           
+                            {{ form_end(form) }}
+
+                            <div class="account-footer">
+                                <p>Already have an account? <a href="{{ path('app_login') }}">Login</a></p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="mb-3">
-                        {{ form_label(form.firstname, 'Firstname', {'label_attr': {'class': 'form-label'}}) }}
-                        {{ form_row(form.firstname, {'attr' : {'class' : 'form-control'}}) }}
-                    </div>
-
-                    <div class="mb-3">
-                        {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
-                        {{ form_row(form.email, {'attr' : {'class' : 'form-control'}}) }}
-                    </div>
-                    <div class="mb-3">
-                        {{ form_label(form.postalAddress, 'Adresse postale', {'label_attr': {'class': 'form-label'}}) }}
-                        {{ form_row(form.postalAddress, {'attr' : {'class' : 'form-control'}}) }}
-                    </div>
-                    {{ form_row(form.password)}}
-
-                    {{ form_end(form) }}
                 </div>
-                <div class="col"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
-

@@ -40,19 +40,21 @@ class RegistrationController extends AbstractController
                 $user->setRegistrationDate(new \DateTime());
                 if ($form->get('usedStorageSpace')->getData()) {
                     $user->setUsedStorageSpace(20);
+                    $user->setRoles(["ROLE_USER"]);
                 }
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
 
-                $notification = 'Your registration went well';
+                return $this->redirectToRoute('app_login');
             } else {
-                $notification = 'Your email already exists';
+                $this->addFlash('error', 'Cet utilisateur existe déjà.');
+
             }
         }
 
         return $this->render('registration/index.html.twig', [
             'form' => $form->createView(),
-            'notification' => $notification,
+            
         ]);
     }
 }
