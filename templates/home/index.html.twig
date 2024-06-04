@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchiSecure</title>
+    <!-- CSS link -->
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    
+        <!-- logo -->
+        
+
+        <!-- social media icons -->
+        <div id="icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+
+        <!-- pagination -->
+       
+
+    <div id="info">
+        <p><strong>ArchiSecure est une plateforme sécurisée permettant à un cabinet d'architectes de stocker et de gérer les fichiers de leurs clients.</strong></p>
+
+        <h1>Avantages d'ArchiSecure</h1>
+
+        <h2>Améliore la productivité</h2>
+        <p>L'un des avantages les plus importants de l'utilisation d'ArchiSecure est qu'il augmente considérablement la productivité. Il élimine le besoin de gérer des fichiers de manière chronophage et permet de hiérarchiser facilement les tâches, assurant une meilleure exécution.</p>
+        <p>En ayant un accès organisé et sécurisé aux fichiers, les architectes peuvent se concentrer sur les tâches les plus critiques en premier, augmentant ainsi la productivité de l'ensemble de l'équipe.</p>
+
+        <h2>Augmente l'efficacité</h2>
+        <p>Avec l'amélioration de la productivité, l'efficacité s'accroît également. Une meilleure efficacité apporte de nouvelles opportunités pour ceux qui ont du mal à être efficaces dans leurs tâches. ArchiSecure permet également d'identifier et d'optimiser les zones inefficaces du flux de travail pour une efficacité maximale.</p>
+
+        <h2>Gagne du temps</h2>
+        <p>Le temps est précieux, et c'est l'une des principales raisons pour lesquelles les gens adoptent des outils de gestion de fichiers. ArchiSecure permet de gagner du temps en éliminant les tâches administratives fastidieuses et en facilitant l'accès rapide aux documents importants.</p>
+        <p>La gestion efficace des fichiers permet de respecter les délais de livraison des projets, offrant plus de temps pour se concentrer sur des tâches prioritaires et stratégiques.</p>
+
+        <h2>Sécurité renforcée</h2>
+        <p>La sécurité des fichiers est primordiale. ArchiSecure utilise des protocoles de sécurité avancés pour protéger les données sensibles des clients. Les fichiers sont chiffrés et stockés de manière sécurisée, assurant une confidentialité totale.</p>
+        <p>De plus, les accès sont contrôlés et surveillés, garantissant que seules les personnes autorisées peuvent accéder aux fichiers.</p>
+
+        <h2>Collaboration simplifiée</h2>
+        <p>ArchiSecure facilite la collaboration entre les différents membres de l'équipe et les clients. Les fichiers peuvent être partagés de manière sécurisée, et des commentaires peuvent être ajoutés directement sur les documents pour améliorer la communication et la coordination.</p>
+        <p>Cette fonctionnalité permet de centraliser toutes les informations nécessaires pour un projet, évitant les pertes de temps liées aux échanges d'emails ou de versions multiples de documents.</p>
+
+        <h2>Traçabilité et audit</h2>
+        <p>ArchiSecure offre une traçabilité complète des actions effectuées sur chaque fichier. Chaque modification, accès ou suppression est enregistré, permettant de suivre l'historique des fichiers et d'assurer une transparence totale.</p>
+        <p>Cette fonctionnalité est particulièrement utile pour les audits et pour assurer la conformité avec les normes et régulations en vigueur.</p>
+
+        <h2>Intégration facile</h2>
+        <p>ArchiSecure peut s'intégrer facilement avec d'autres outils et logiciels utilisés par le cabinet d'architectes. Que ce soit pour la gestion de projet, la communication ou la conception, ArchiSecure s'adapte à l'écosystème existant, offrant une solution complète et interconnectée.</p>
+        <p>Cette flexibilité permet de maximiser l'efficacité et de réduire les interruptions dans les flux de travail existants.</p>
+    </div>
+</body>
+</html>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+        box-sizing: border-box;
+    }
+   
+    #container {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        background: #e9e9eb;
+    }
+    #logo {
+        position: absolute;
+        left: 8%;
+        top: 30px;
+        font-size: 30px;
+        z-index: 997;
+        font-weight: bold;
+        color: #165397;
+    }
+    #content {
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        z-index: 996;
+    }
+    #content h2 {
+        font-size: 300px;
+        color: #165397;
+    }
+    #content:hover h2 {
+        color: #000;
+        transition: 0.5s;
+    }
+    #content h4 {
+        font-size: 70px;
+        color: #000;
+    }
+    #content:hover h4 {
+        color: #165397;
+        transition: 0.5s;
+    }
+    #icons {
+        height: 500px;
+        width: 65px;
+        position: absolute;
+        left: 0;
+        top: calc(50% - 250px);
+        background: #1c5da4;
+        border-radius: 0 60px 60px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 998;
+    }
+    #icons:hover {
+        background: #000;
+    }
+    #icons a {
+        text-decoration: none;
+        height: 40px;
+        width: 40px;
+        font-size: 23px;
+        color: #e9e9eb;
+        display: grid;
+        place-items: center;
+        margin: 30px 0;
+    }
+    #icons a:hover {
+        color: #1b66bb;
+    }
+    #pagination {
+        position: absolute;
+        bottom: 4%;
+        right: 20%;
+        z-index: 995;
+    }
+    #pagination a {
+        text-decoration: none;
+        color: #000;
+        font-size: 70px;
+        margin: 0 30px;
+        transition: 0.5s;
+    }
+    #pagination a:hover {
+        color: #165397;
+    }
+    #line1, #line2 {
+        height: 150px;
+        width: 60px;
+        background: #000;
+        position: absolute;
+        bottom: 0;
+        left: 20%;
+        transform: skewX(-45deg);
+    }
+    #line2 {
+        height: 60px;
+        left: 26%;
+    }
+    #info {
+        padding: 50px;
+        margin-right:20px;
+    }
+    #info p, #info h1, #info h2 {
+        margin: 20px 0;
+        color: #333;
+    }
+    #info p strong {
+        color: #165397;
+    }
+</style>
+{% endblock %}
